@@ -5,8 +5,14 @@
         <group>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/LandingPage.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/DataPembeli.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/addDataPembeli.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/addTransaksiPenjualan.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/editDataProduk.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/addDataProduk.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/Invoice.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/editDataPembeli.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/Printout_Invoice.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/editTransaksiPenjualan.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/TransaksiPenjualan.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/DataProduk.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/Printout_Invoice/src/printout_invoice/Login.java</file>

@@ -27,21 +27,250 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField14 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 23));
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Edit transaksi");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Close.png")); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\minimize.png")); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1171, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 80));
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel4.setText("Order number:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 30));
+
+        jTextField3.setEditable(false);
+        jTextField3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, 30));
+
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel5.setText("Tanggal :");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, 30));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 200, 30));
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel3.setText("Id customer :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
+
+        jTextField2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 150, 30));
+
+        jButton2.setText("Search");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 110, 30));
+
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel6.setText("Nama customer :");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 30));
+
+        jTextField4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 150, 30));
+
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel7.setText("Email customer :");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 30));
+
+        jTextField5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 150, 30));
+
+        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel10.setText("Nomor telpon :");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 30));
+
+        jTextField6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 150, 30));
+
+        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel11.setText("Id produk :");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, 30));
+
+        jTextField7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 250, 30));
+
+        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel12.setText("Nama Product :");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, 30));
+
+        jTextField8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 250, 30));
+
+        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel13.setText("Unit price :");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, -1, 30));
+
+        jTextField9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 250, 30));
+
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel14.setText("Qty :");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, 30));
+
+        jTextField10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 250, 30));
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel16.setText("Description :");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, -1, 30));
+
+        jTextField11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 250, 30));
+
+        jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel19.setText("Line total :");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, 30));
+
+        jTextField13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 250, 30));
+
+        jButton1.setText("Search");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, -1, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Product Name", "Unit Price", "Qty", "Description", "Line total :"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, -1, 270));
+
+        jTextField14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 480, 150, 30));
+
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel15.setText("Sub total :");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 480, -1, 30));
+
+        jTextField12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 530, 150, 30));
+
+        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel17.setText("Discount :");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 530, -1, 30));
+
+        jTextField15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 580, 150, 30));
+
+        jLabel18.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel18.setText("Total :");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 580, -1, 30));
+
+        jButton3.setText("Add to table");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, 120, 30));
+
+        jButton4.setText("Clear");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 110, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Add.png")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 720, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +308,47 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,35 @@
  */
 package printout_invoice;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import static printout_invoice.Printout_Invoice.getConnection;
+
 /**
  *
  * @author ASUS
  */
 public class DataPembeli extends javax.swing.JFrame {
-
+DefaultTableModel mode = new DefaultTableModel();
+Connection c;
     /**
      * Creates new form DataPembeli
      */
     public DataPembeli() {
+    try {
+        this.c = getConnection();
+    } catch (Exception ex) {
+        Logger.getLogger(DataPembeli.class.getName()).log(Level.SEVERE, null, ex);
+    }
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+        tabelCustomer();
     }
 
     /**
@@ -29,20 +47,22 @@ public class DataPembeli extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableCustomer = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 23));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -53,29 +73,62 @@ public class DataPembeli extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableCustomer);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 1190, 490));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 1190, 490));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Add.png")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 820, -1, -1));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Delete.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 820, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\minimize.png")); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, -1, -1));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Edit.png")); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 820, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Close.png")); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 20, -1, -1));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 660, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DATA CUSTOMER");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\Close.png")); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\minimize.png")); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 10, -1, -1));
+
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,6 +143,91 @@ public class DataPembeli extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+       addDataPembeli databeli = new addDataPembeli();
+       databeli.setVisible(true);
+       
+    }//GEN-LAST:event_jLabel1MouseClicked
+public static void AddRowToJTable(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)tableCustomer.getModel();
+        model.addRow(dataRow);
+    }
+public void tabelCustomer(){
+        Object [] header = {"ID Customer","Nama Customer","Email","Telpon/hp","Alamat"
+    };
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tableCustomer.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("select * from datapembeli order by cus_nam asc");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("cus_id");
+                String c2 = rs.getString("cus_nam");
+                String c3 = rs.getString("cus_email");
+                String c4 = rs.getString("cus_tel");
+                String c5 = rs.getString("cus_alamat");
+                
+                String[] data = {c1,c2,c3,c4,c5};
+                model.addRow(data);
+            }
+        } catch( Exception e){
+            
+        }
+    }
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        try{ 
+            int i = tableCustomer.getSelectedRow();
+            TableModel mode = tableCustomer.getModel();
+
+            editDataPembeli edit = new editDataPembeli();
+            edit.setVisible(true);
+           
+            
+            edit.jTextField4.setText(mode.getValueAt(i, 0).toString());
+            edit.jTextField3.setText(mode.getValueAt(i, 1).toString());
+            edit.jTextField5.setText(mode.getValueAt(i,2).toString());
+            edit.jTextField6.setText(mode.getValueAt(i, 3).toString());
+            edit.jTextArea1.setText(mode.getValueAt(i, 4).toString());
+           
+        } catch(Exception e){
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+         int i = tableCustomer.getSelectedRow();
+        TableModel mode = tableCustomer.getModel();
+            
+        try {
+            int yn = JOptionPane.showConfirmDialog(null, "Yakin menghapus data ?", "Hapus data", JOptionPane.YES_NO_OPTION);
+            if (yn == 0){
+                PreparedStatement ps = c.prepareStatement("delete from datapembeli where cus_id='"+mode.getValueAt(i, 0).toString()+"'");
+                ps.executeUpdate();
+               JOptionPane.showMessageDialog(null, "Data terhapus");
+               tabelCustomer();
+            } else {
+                
+            }
+            
+        } catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Something went wrong");
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tabelCustomer();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,14 +265,15 @@ public class DataPembeli extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private static javax.swing.JTable tableCustomer;
     // End of variables declaration//GEN-END:variables
 }
