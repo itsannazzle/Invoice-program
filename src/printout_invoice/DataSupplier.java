@@ -8,7 +8,6 @@ package printout_invoice;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,28 +19,21 @@ import static printout_invoice.Printout_Invoice.getConnection;
  *
  * @author ASUS
  */
-public class DataPembeli extends javax.swing.JFrame {
+public class DataSupplier extends javax.swing.JFrame {
 DefaultTableModel mode = new DefaultTableModel();
-
-
-Connection c;
-
+    Connection c;
     /**
-     * Creates new form DataPembeli
+     * Creates new form DataSupplier
      */
-    public DataPembeli() {
+    public DataSupplier() {
     try {
-        this.c = getConnection();
+        this.c = Printout_Invoice.getConnection();
     } catch (Exception ex) {
-        Logger.getLogger(DataPembeli.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(DataSupplier.class.getName()).log(Level.SEVERE, null, ex);
     }
         initComponents();
+        tabelSupplier();
         setExtendedState(MAXIMIZED_BOTH);
-        tabelCustomer();
-       
-            
-                    
-        
     }
 
     /**
@@ -54,14 +46,14 @@ Connection c;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableCustomer = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablesupplier = new javax.swing.JTable();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +62,12 @@ Connection c;
         jPanel1.setBackground(new java.awt.Color(0, 0, 23));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tableCustomer.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Data Supplier");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, -1));
+
+        tablesupplier.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,9 +78,25 @@ Connection c;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableCustomer);
+        jScrollPane1.setViewportView(tablesupplier);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 1190, 490));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 1190, 410));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\minimize.png")); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 40, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\Close.png")); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Add.png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,15 +104,7 @@ Connection c;
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Delete.png")); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Edit.png")); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,28 +112,15 @@ Connection c;
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 660, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("DATA CUSTOMER");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\Close.png")); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Delete.png")); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\minimize.png")); // NOI18N
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
 
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +128,7 @@ Connection c;
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, -1, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,31 +144,58 @@ Connection c;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-       addDataPembeli databeli = new addDataPembeli();
-       databeli.setVisible(true);
-       
+        // TODO add your handling code here:
+        addDataSupplier DPD = new addDataSupplier();
+        DPD.setVisible(true);
+
     }//GEN-LAST:event_jLabel1MouseClicked
 public static void AddRowToJTable(Object[] dataRow)
     {
-        DefaultTableModel model = (DefaultTableModel)tableCustomer.getModel();
+        DefaultTableModel model = (DefaultTableModel)tablesupplier.getModel();
         model.addRow(dataRow);
     }
-public void tabelCustomer(){
-        Object [] header = {"ID Customer","Nama Customer","Email","Telpon/hp","Alamat"
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        try{
+            int i = tablesupplier.getSelectedRow();
+            TableModel mode = tablesupplier.getModel();
+
+            editDataSupplier edit = new editDataSupplier();
+            edit.setVisible(true);
+
+            edit.jTextField4.setText(mode.getValueAt(i, 0).toString());
+            edit.jTextField3.setText(mode.getValueAt(i, 1).toString());
+            edit.jTextField5.setText(mode.getValueAt(i, 2).toString());
+            edit.jTextField6.setText(mode.getValueAt(i, 3).toString());
+            edit.jTextArea1.setText(mode.getValueAt(i, 4).toString());
+
+        } catch(Exception e){
+
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+public void tabelSupplier(){
+        Object [] header = {"ID Supplier","Nama Supplier","Email","Telpon/hp","Alamat"
     };
         DefaultTableModel model = new DefaultTableModel(null,header);
-        tableCustomer.setModel(model);
+        tablesupplier.setModel(model);
         try{
             Connection c = getConnection();
-            PreparedStatement ps = c.prepareStatement("select * from datapembeli order by cus_nam asc");
+            PreparedStatement ps = c.prepareStatement("select * from datasupplier order by sup_nama asc");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                String c1 = rs.getString("cus_id");
-                String c2 = rs.getString("cus_nam");
-                String c3 = rs.getString("cus_email");
-                String c4 = rs.getString("cus_tel");
-                String c5 = rs.getString("cus_alamat");
+                String c1 = rs.getString("sup_id");
+                String c2 = rs.getString("sup_nama");
+                String c3 = rs.getString("sup_email");
+                String c4 = rs.getString("sup_tel");
+                String c5 = rs.getString("sup_alamat");
                 
                 String[] data = {c1,c2,c3,c4,c5};
                 model.addRow(data);
@@ -185,58 +204,28 @@ public void tabelCustomer(){
             
         }
     }
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        try{ 
-            int i = tableCustomer.getSelectedRow();
-            
-            TableModel mode = tableCustomer.getModel();
-
-            editDataPembeli edit = new editDataPembeli();
-            edit.setVisible(true);
-             
-           
-            
-            edit.jTextField4.setText(mode.getValueAt(i, 0).toString());
-            edit.jTextField3.setText(mode.getValueAt(i, 1).toString());
-            edit.jTextField5.setText(mode.getValueAt(i,2).toString());
-            edit.jTextField6.setText(mode.getValueAt(i, 3).toString());
-            edit.jTextArea1.setText(mode.getValueAt(i, 4).toString());
-           
-        } catch(Exception e){
-
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseClicked
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-         int i = tableCustomer.getSelectedRow();
-        TableModel mode = tableCustomer.getModel();
-            
+        int i = tablesupplier.getSelectedRow();
+        TableModel mode = tablesupplier.getModel();
+
         try {
             int yn = JOptionPane.showConfirmDialog(null, "Yakin menghapus data ?", "Hapus data", JOptionPane.YES_NO_OPTION);
             if (yn == 0){
-                PreparedStatement ps = c.prepareStatement("delete from datapembeli where cus_id='"+mode.getValueAt(i, 0).toString()+"'");
+                PreparedStatement ps = c.prepareStatement("delete from datasupplier where sup_id='"+mode.getValueAt(i, 0).toString()+"'");
                 ps.executeUpdate();
-               JOptionPane.showMessageDialog(null, "Data terhapus");
-               tabelCustomer();
+                JOptionPane.showMessageDialog(null, "Data terhapus");
+                tabelSupplier();
             } else {
-                
+
             }
-            
+
         } catch(Exception e ){
             JOptionPane.showMessageDialog(null, "Something went wrong");
-        }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        tabelCustomer();
+        tabelSupplier();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -256,20 +245,20 @@ public void tabelCustomer(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DataPembeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DataPembeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DataPembeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DataPembeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataPembeli().setVisible(true);
+                new DataSupplier().setVisible(true);
             }
         });
     }
@@ -277,13 +266,13 @@ public void tabelCustomer(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTable tableCustomer;
+    private static javax.swing.JTable tablesupplier;
     // End of variables declaration//GEN-END:variables
 }
