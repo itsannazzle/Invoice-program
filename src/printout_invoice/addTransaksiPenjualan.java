@@ -27,7 +27,7 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
     Connection c = getConnection();
     DefaultTableModel mode = new DefaultTableModel();
     SimpleDateFormat date = new SimpleDateFormat("dd-MM-yy");
-    Vector data = mode.getDataVector();
+   
     /**
      * Creates new form addTransaksiPenjualan
      */
@@ -54,6 +54,7 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -87,6 +88,8 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -126,14 +129,23 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\back.png")); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 982, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 943, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel21)
@@ -142,16 +154,17 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(26, 26, 26))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 80));
@@ -304,6 +317,16 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 640, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 480, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Add.png")); // NOI18N
+        jLabel22.setToolTipText("");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -330,7 +353,13 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         return null;
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+        jTextField13.setText("");
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
@@ -419,7 +448,7 @@ public boolean checkDuplicate (String duplicate){
           // ps.setString(4, (String) mode.getDataVector().elementAt(tabelJual.columnAtPoint(point)));
            ps.setString(5, jTextField11.getText());
           
-          
+         
            ps.executeUpdate();
            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
            
@@ -442,20 +471,58 @@ public boolean checkDuplicate (String duplicate){
                 jTextField11.getText(),
                 jTextField13.getText()
            });
-       double subtotal = 0;
-       for(int i =0; i<tabelJual.getRowCount();  i++){
-           int amount = Integer.parseInt((String) mode.getValueAt(i, 5));
-           subtotal += amount;
-       }
-       jTextField14.setText(String.valueOf(subtotal));
-       try{
-           String update = "";
-         
-       } catch(Exception e){
-           
-       }
+//       double subtotal = 0;
+//       for(int i =0; i<tabelJual.getRowCount();  i++){
+//           int amount = Integer.parseInt((String) mode.getValueAt(i, 5));
+//           subtotal += amount;
+//       }
+//       jTextField14.setText(String.valueOf(subtotal));
+//       try{
+//           String update = "";
+//         
+//       } catch(Exception e){
+//           
+//       }
        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        LandingPage l = new LandingPage();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+    DefaultTableModel model = (DefaultTableModel)tabelJual.getModel(); 
+    if(model.getRowCount() == 0){
+        JOptionPane.showMessageDialog(this,"Isi tabel terlebih dahulu");
+    } else{
+        String nomor_order,id_produk,qt,total;
+        try{
+            for(int i = 0; i<model.getRowCount(); i++){
+                nomor_order = jTextField3.getText();
+                id_produk = model.getValueAt(i, 0).toString();
+                qt = model.getValueAt(i, 4).toString();
+                int qty = Integer.parseInt(qt);
+                total = model.getValueAt(i, 5).toString();
+                int total_harga = Integer.parseInt(total);
+                PreparedStatement ps = c.prepareStatement("insert into t_struk values (?,?,?,?)");
+                ps.setString(1, nomor_order);
+                ps.setString(2, id_produk);
+                ps.setInt(3, qty);
+                ps.setInt(4, total_harga);
+                ps.executeUpdate();
+            }
+             
+          
+           JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+           model.setRowCount(0);
+            
+        } catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    }//GEN-LAST:event_jLabel22MouseClicked
 
     /**
      * @param args the command line arguments
@@ -496,6 +563,7 @@ public boolean checkDuplicate (String duplicate){
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -509,12 +577,14 @@ public boolean checkDuplicate (String duplicate){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
