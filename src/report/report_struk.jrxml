@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85cb9e02-bf87-4636-8fc8-53e0d02b0c02">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFD700">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFFBE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Tabel_struk" uuid="711ea5b5-f841-4cc4-a73f-c45b19038eb1">
+		<queryString>
+			<![CDATA[SELECT t_struk.id_produk, dataproduk.prod_nama, dataproduk.prod_colour, dataproduk.prod_satuan, t_struk.qty, t_struk.total_harga FROM t_struk INNER JOIN dataproduk ON t_struk.id_produk = dataproduk.prod_id WHERE t_struk.nomor_order = "TR001"]]>
+		</queryString>
+		<field name="id_produk" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="prod_nama" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="prod_colour" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="prod_satuan" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="qty" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="total_harga" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="nomor_transaksi" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT trpenjualan.jual_id, trpenjualan.jual_tgl, trpenjualan.jual_cus_id, datapembeli.cus_nam, trpenjualan.jual_total_item, trpenjualan.jual_subtot, trpenjualan.jual_disc, trpenjualan.jual_total FROM trpenjualan INNER JOIN datapembeli ON trpenjualan.jual_cus_id = datapembeli.cus_id where trpenjualan.jual_id="TR001"]]>
+	</queryString>
+	<field name="jual_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_tgl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_cus_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cus_nam" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_total_item" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_subtot" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_disc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="cus_nam_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{cus_nam}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="158" height="48" uuid="3e3f4287-3e93-4c8b-9347-ef9ac0c8eee8"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 1.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="59" width="100" height="20" uuid="0273353c-206e-4a4c-931c-8f4ca3be54e8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="215" height="38" uuid="c5b418ac-8ba4-45bb-975c-58edcd63fb5e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Struk Transaksi Pembelian]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="56" width="83" height="23" uuid="9d3910b9-f0b4-4fb1-b187-35aea9b8e9a3"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Dicetak pada :]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="23" width="102" height="23" uuid="25f86a09-01eb-413e-b753-e0f051b71929"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Nama customer :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="46" width="102" height="23" uuid="6dbb9088-ac5f-4d55-af44-f45476141e34"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Tanggal transaksi :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="102" height="23" uuid="326b5b33-57c1-430b-835b-a9eeb9da38df"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Nomor transaksi :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="3" width="100" height="20" uuid="3c8a23ff-5415-423d-91b7-c5ca74de2c54"/>
+				<textFieldExpression><![CDATA[$F{jual_id}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Page">
+				<reportElement x="102" y="23" width="100" height="20" uuid="7f2e96b3-2783-4b3c-9cb6-f1bc845f9a06"/>
+				<textFieldExpression><![CDATA[$V{cus_nam_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="50" width="100" height="20" uuid="7878b846-6d76-4fcf-ae5d-577eddd0dfec"/>
+				<textFieldExpression><![CDATA[$F{jual_tgl}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="165" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="0" y="0" width="555" height="165" uuid="02911f7e-e406-445f-a76e-1de15cd141f4"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Tabel_struk" uuid="4e43e9b1-d67d-40db-a3ee-802a54440eff">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="b28b62cf-1c32-490d-9c14-1a6d10f64b69">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="626b294e-0671-40de-b481-dfcea351c380"/>
+								<textFieldExpression><![CDATA[$F{id_produk}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="792c8b8e-4d7a-4669-8dd5-0a29f15ea00d">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="251760f5-b38e-4c78-bd21-dbf3027dc0b7"/>
+								<textFieldExpression><![CDATA[$F{prod_nama}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="51b3a1d0-decf-44dd-ab11-87e02b73aef2">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="8634a71e-d299-40df-af01-39cb295b1903"/>
+								<textFieldExpression><![CDATA[$F{prod_colour}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="15a71be1-6072-4487-b548-77a93a5ef978">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="89666c80-7545-4d14-8107-ad030f10d620"/>
+								<textFieldExpression><![CDATA[$F{prod_satuan}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="b35d7dc9-819e-481a-9114-2d569836dc28">
+						<jr:tableHeader height="30" rowSpan="1"/>
+						<jr:tableFooter height="30" rowSpan="1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="bc0afa4a-0bf2-4d8f-89fd-0e62245df6d7"/>
+								<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter height="30" rowSpan="1"/>
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="8fbdc3b9-6068-4062-9d06-c43c7cbca381">
+						<jr:tableHeader height="30" rowSpan="1"/>
+						<jr:tableFooter height="30" rowSpan="1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7781446d-4cd2-4806-ba9f-8b6840c7c1c7"/>
+								<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:columnFooter height="30" rowSpan="1"/>
+						<jr:detailCell height="30" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="109" splitType="Stretch">
+			<textField>
+				<reportElement x="372" y="2" width="102" height="23" uuid="018684eb-2991-40f7-b9bb-aaeeacf46ff8"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Total produk :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="25" width="102" height="23" uuid="7dd45e36-55cd-4a82-b114-d984e477b2f3"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Sub total harga :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="48" width="102" height="23" uuid="1fb0382b-4d2f-4a5a-854e-b2c58e3b525e"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Discount :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="71" width="102" height="23" uuid="08a76647-b3b6-4b5e-a8a3-38f174eefea9"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Total pembayaran :]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="5" width="81" height="20" uuid="717011d4-28d1-482f-9f63-c36867d0c1cb"/>
+				<textFieldExpression><![CDATA[$F{jual_total_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="25" width="81" height="20" uuid="c94669fe-0126-4b3d-aeae-c9cb387f1c3d"/>
+				<textFieldExpression><![CDATA[$F{jual_subtot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="51" width="81" height="20" uuid="8e06766d-d81d-4611-9e3a-22f85e025fb7"/>
+				<textFieldExpression><![CDATA[$F{jual_disc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="71" width="81" height="20" uuid="ad8fb879-be91-46a2-81a2-4cf8a95c58a2"/>
+				<textFieldExpression><![CDATA[$F{jual_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

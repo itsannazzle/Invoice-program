@@ -6,18 +6,25 @@
 package printout_invoice;
 
 import java.awt.List;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.event.CaretEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -26,8 +33,10 @@ import javax.swing.table.DefaultTableModel;
 public class addTransaksiPenjualan extends javax.swing.JFrame {
     Connection c = getConnection();
     DefaultTableModel mode = new DefaultTableModel();
-    SimpleDateFormat date = new SimpleDateFormat("dd-MM-yy");
-   
+    SimpleDateFormat date = new SimpleDateFormat("dd-MMM-yyyy");
+   DecimalFormat kursindo;
+       DecimalFormatSymbols formatrupiah;
+       double nilai;
     /**
      * Creates new form addTransaksiPenjualan
      */
@@ -35,7 +44,11 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         
         setExtendedState(MAXIMIZED_BOTH);
         initComponents();
-       
+         NumberFormat format = NumberFormat.getInstance();
+        format.setMaximumFractionDigits(0);
+     NumberFormatter numberFormat = new NumberFormatter(format);
+        numberFormat.setAllowsInvalid(false);
+     
        
     }
 
@@ -90,6 +103,10 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -170,8 +187,8 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 80));
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel4.setText("Order number:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 30));
+        jLabel4.setText("Nomor transaksi :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 30));
 
         jTextField3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, 30));
@@ -206,8 +223,8 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 150, 30));
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel11.setText("Id produk :");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, 30));
+        jLabel11.setText("Kode produk :");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, 30));
 
         jTextField7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -215,74 +232,89 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
                 jTextField7KeyReleased(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 250, 30));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 130, 30));
 
         jLabel12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel12.setText("Nama Product :");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, 30));
+        jLabel12.setText("Nama :");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, 30));
 
         jTextField8.setEditable(false);
         jTextField8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 250, 30));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 130, 30));
 
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel13.setText("Harga :");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, 30));
 
         jTextField9.setEditable(false);
         jTextField9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 250, 30));
+        jTextField9.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTextField9InputMethodTextChanged(evt);
+            }
+        });
+        jTextField9.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextField9PropertyChange(evt);
+            }
+        });
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel14.setText("Satuan :");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, 30));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, 30));
 
         jTextField10.setEditable(false);
         jTextField10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 250, 30));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 130, 30));
 
         jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel16.setText("Qty :");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, 30));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, 30));
 
         jTextField11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField11KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
         });
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 250, 30));
+        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 120, 30));
 
         jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel19.setText("Line total :");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, 30));
+        jLabel19.setText("Total harga :");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, -1, 30));
 
         jTextField13.setEditable(false);
         jTextField13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 250, 30));
+        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 120, 30));
 
-        jButton4.setText("Clear");
+        jButton4.setText("Bersihkan");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 110, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 110, 30));
 
-        jButton3.setText("Add to table");
+        jButton3.setText("Tambah");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 120, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 120, 30));
 
         tabelJual.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Produk", "Nama", "Harga", "Satuan", "Qty", "Total harga"
+                "Kode produk", "Nama", "Harga", "Satuan", "Qty", "Total harga"
             }
         ));
         jScrollPane1.setViewportView(tabelJual);
@@ -290,15 +322,15 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, -1, 270));
 
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel15.setText("Sub total :");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 480, -1, 30));
+        jLabel15.setText("Jumlah produk :");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 470, -1, 30));
 
         jTextField14.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 480, 150, 30));
+        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 520, 150, 30));
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel17.setText("Discount :");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 530, -1, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 570, -1, 30));
 
         jTextField12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -306,23 +338,36 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
                 jTextField12KeyReleased(evt);
             }
         });
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 530, 150, 30));
+        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 570, 150, 30));
 
         jLabel18.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel18.setText("Total :");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, -1, 30));
+        jLabel18.setText("Total pembayaran :");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 620, -1, 30));
 
         jTextField15.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 580, 150, 30));
+        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 620, 150, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Add.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\tambah transaksi.png")); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 640, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 630, -1, -1));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 480, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel22.setText("Warna :");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, -1, 30));
+
+        jTextField16.setEditable(false);
+        jTextField16.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 120, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 470, 150, 30));
+
+        jLabel23.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel23.setText("Sub total :");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 520, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,6 +399,7 @@ public class addTransaksiPenjualan extends javax.swing.JFrame {
         jTextField9.setText("");
         jTextField10.setText("");
         jTextField11.setText("");
+                jTextField16.setText("");
         jTextField13.setText("");
        
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -394,6 +440,7 @@ public static void AddRowToJTable(Object[] dataRow)
                
                jTextField8.setText(rs.getString("prod_nama"));
                jTextField9.setText(rs.getString("prod_harga"));
+              jTextField16.setText(rs.getString("prod_colour"));
                jTextField10.setText(rs.getString("prod_satuan"));
             }
                 
@@ -403,6 +450,7 @@ public static void AddRowToJTable(Object[] dataRow)
     }//GEN-LAST:event_jTextField7KeyReleased
 
     private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
+        
         String a = jTextField11.getText();
         String b = jTextField9.getText();
        int total =  Integer.parseInt(a)*Integer.parseInt(b);
@@ -436,45 +484,54 @@ public boolean checkDuplicate (String duplicate){
        } 
         else {
         try{
-           
-           PreparedStatement ps = c.prepareStatement("insert into trpenjualan values (?,?,?,?,?,?)");
-           ps.setString(1, jTextField3.getText());
-           ps.setString(2, date.format(jDateChooser1.getDate()));
-           ps.setString(3, jTextField2.getText());
-           ps.setString(4, jTextField14.getText());
-           ps.setString(5, jTextField12.getText());
-           ps.setString(6, jTextField15.getText());
-          
-        
-           ps.executeUpdate();
-           JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
-           
             
-           this.dispose();
-       } catch(Exception e){
-           System.out.println("Gagal tambahkan data");
-           JOptionPane.showMessageDialog(null, "Periksa kembali data anda", "Gagal menambahkan data", 2);
-       
-       }
-        try{
-            for(int i = 0; i<model.getRowCount(); i++){
+           for(int i = 0; i<model.getRowCount(); i++){
                 nomor_order = jTextField3.getText();
                 id_produk = model.getValueAt(i, 0).toString();
                 qt = model.getValueAt(i, 4).toString();
                 int qty = Integer.parseInt(qt);
                 total = model.getValueAt(i, 5).toString();
                 int total_harga = Integer.parseInt(total);
-                PreparedStatement ps = c.prepareStatement("insert into t_struk values (?,?,?,?)");
-                ps.setString(1, nomor_order);
-                ps.setString(2, id_produk);
-                ps.setInt(3, qty);
-                ps.setInt(4, total_harga);
-                ps.executeUpdate();
-            }
-        }catch(Exception e){
-            
-        } 
-    }  
+                PreparedStatement ps2 = c.prepareStatement("insert into t_struk values (?,?,?,?)");
+                ps2.setString(1, nomor_order);
+                ps2.setString(2, id_produk);
+                ps2.setInt(3, qty);
+                ps2.setInt(4, total_harga);
+                ps2.executeUpdate();
+           }
+           PreparedStatement ps1 = c.prepareStatement("insert into trpenjualan values (?,?,?,?,?,?,?)");
+           
+           ps1.setString(1, jTextField3.getText());
+           ps1.setString(2, date.format(jDateChooser1.getDate()));
+           ps1.setString(3, jTextField2.getText());
+           ps1.setString(4, jTextField1.getText());
+           ps1.setString(5, jTextField14.getText());
+           ps1.setString(6, jTextField12.getText());
+           ps1.setString(7, jTextField15.getText());
+          ps1.executeUpdate();
+          JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+           this.dispose();  
+                  TransaksiPenjualan.AddRowToJTable(new Object[]{
+               
+                (date.format(jDateChooser1.getDate())),
+                      jTextField3.getText(),
+                jTextField2.getText(),
+               
+                jTextField4.getText(),
+                jTextField1.getText(),
+                jTextField15.getText()
+                          
+                
+           });
+                
+         
+       } catch(Exception e){
+           System.out.println(e);
+           JOptionPane.showMessageDialog(null, "Periksa kembali data anda", "Gagal menambahkan data", 2);
+       }
+        
+    }
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -487,11 +544,14 @@ public boolean checkDuplicate (String duplicate){
                 jTextField13.getText()
            });
             int sum = 0;
+            int tot_produk = 0;
             for(int i = 0; i < tabelJual.getRowCount(); i++)
         {
             sum = sum + Integer.parseInt(tabelJual.getValueAt(i, 5).toString());
+            tot_produk = tot_produk + Integer.parseInt(tabelJual.getValueAt(i, 4).toString());
         }
             jTextField14.setText(Integer.toString(sum));
+            jTextField1.setText(Integer.toString(tot_produk));
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -507,6 +567,20 @@ public boolean checkDuplicate (String duplicate){
         int total_pembayaran = b-a;
         jTextField15.setText(String.valueOf(total_pembayaran));
     }//GEN-LAST:event_jTextField12KeyReleased
+
+    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+        if(!Character.isDigit(evt.getKeyChar())){
+           evt.consume(); 
+        } 
+    }//GEN-LAST:event_jTextField11KeyTyped
+
+    private void jTextField9InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField9InputMethodTextChanged
+       
+    }//GEN-LAST:event_jTextField9InputMethodTextChanged
+
+    private void jTextField9PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField9PropertyChange
+        
+    }//GEN-LAST:event_jTextField9PropertyChange
 public boolean checkDuplicateOrder (String duplicate){
     boolean checkuser = false;
     
@@ -575,6 +649,8 @@ public boolean checkDuplicateOrder (String duplicate){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -585,12 +661,14 @@ public boolean checkDuplicateOrder (String duplicate){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
