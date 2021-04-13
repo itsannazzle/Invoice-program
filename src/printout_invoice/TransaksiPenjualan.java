@@ -208,12 +208,12 @@ public Connection getConnection(){
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
        int i = tabelTrPenjualan.getSelectedRow();
         TableModel mode = tabelTrPenjualan.getModel();
-        String nmt_order = mode.getValueAt(i, 1).toString();
-        System.out.println(nmt_order);
+        String nomor_transaksi = mode.getValueAt(i, 1).toString();
+      
         try {
             HashMap param = new HashMap();
-            param.put("nomor_transaksi",nmt_order);
-            String rpt = "src/report/report_struk.jrxml";
+            param.put("nomor_transaksi",nomor_transaksi);
+            String rpt = "src/report/newReport1.jrxml";
             JasperReport jr = JasperCompileManager.compileReport(rpt);
             JasperPrint jpp = JasperFillManager.fillReport(jr, param,c);
             JasperViewer.viewReport(jpp,false);
