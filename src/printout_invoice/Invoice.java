@@ -5,17 +5,25 @@
  */
 package printout_invoice;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
  */
 public class Invoice extends javax.swing.JFrame {
-
+Connection c = getConnection();
     /**
      * Creates new form Invoice
      */
     public Invoice() {
         initComponents();
+        tabelInovoice();
     }
 
     /**
@@ -30,7 +38,7 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_inv = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,7 +58,7 @@ public class Invoice extends javax.swing.JFrame {
         jLabel6.setText("Invoice");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_inv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,18 +69,31 @@ public class Invoice extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table_inv);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 1190, 430));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\tambah.png")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 660, -1, -1));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 640, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\ubah.png")); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\refresh.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 660, -1, -1));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 640, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\back.png")); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,7 +104,7 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\hapus.png")); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 660, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, -1, -1));
 
         jLabel20.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\minimize.png")); // NOI18N
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +112,7 @@ public class Invoice extends javax.swing.JFrame {
                 jLabel20MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 10, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, -1, -1));
 
         jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\Images\\Close.png")); // NOI18N
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,28 +120,65 @@ public class Invoice extends javax.swing.JFrame {
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 10, -1, -1));
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1429, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1449, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public Connection getConnection(){
+        Connection con;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inv", "root", "");
+            return con;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         LandingPage l = new LandingPage();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
-
+public static void AddRowToJTable(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)table_inv.getModel();
+        model.addRow(dataRow);
+    }
+ public void tabelInovoice(){
+        Object [] header = {"Tanggal","Nomor invoice","Nomor transaksi","Penerima invoice"
+    };
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        table_inv.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("select * from invoice");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("inv_tanggal");
+                String c2 = rs.getString("inv_nomor");
+                String c3 = rs.getString("inv_trnomor");
+                String c4 = rs.getString("inv_penerima");
+                
+                
+                String[] data = {c1,c2,c3,c4};
+                model.addRow(data);
+            }
+        } catch( Exception e){
+            
+        }
+    }
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jLabel20MouseClicked
@@ -128,6 +186,20 @@ public class Invoice extends javax.swing.JFrame {
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        addInvoice add = new addInvoice();
+        add.setVisible(true);
+       
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        tabelInovoice();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -175,6 +247,6 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable table_inv;
     // End of variables declaration//GEN-END:variables
 }
