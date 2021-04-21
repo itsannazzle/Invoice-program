@@ -5,6 +5,8 @@
  */
 package printout_invoice;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,12 +16,13 @@ import java.sql.SQLException;
  * @author ASUS
  */
 public class editTransaksiPenjualan extends javax.swing.JFrame {
-
+Connection c = getConnection();
     /**
      * Creates new form editTransaksiPenjualan
      */
     public editTransaksiPenjualan() {
         initComponents();
+        showCustomer();
     }
 
     /**
@@ -146,6 +149,13 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
         jTextField2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jTextField2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTextField2InputMethodTextChanged(evt);
+            }
+        });
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 150, 30));
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -211,7 +221,7 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\simpan.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 680, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 660, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel11.setText("Kode produk :");
@@ -313,7 +323,33 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public Connection getConnection(){
+        Connection con;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/inv", "root", "");
+            return con;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
+public void showCustomer(){
+    try{
+            PreparedStatement ps = c.prepareStatement("select * from datapembeli where cus_id='"+jTextField2.getText()+"'");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               
+               jTextField4.setText(rs.getString("cus_nam"));
+               jTextField5.setText(rs.getString("cus_email"));
+               jTextField6.setText(rs.getString("cus_tel"));
+            }
+                
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+}
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
 //        try{
 //            PreparedStatement ps = c.prepareStatement("select * from dataproduk where prod_id='"+jTextField7.getText()+"'");
@@ -371,6 +407,10 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jTextField2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField2InputMethodTextChanged
+        
+    }//GEN-LAST:event_jTextField2InputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -435,7 +475,7 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
+    public javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
@@ -446,7 +486,7 @@ public class editTransaksiPenjualan extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables

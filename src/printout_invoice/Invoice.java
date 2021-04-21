@@ -10,7 +10,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -46,6 +54,7 @@ Connection c = getConnection();
         jLabel7 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -121,6 +130,14 @@ Connection c = getConnection();
             }
         });
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 10, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\cetak.png")); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,6 +218,25 @@ public static void AddRowToJTable(Object[] dataRow)
         tabelInovoice();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        int i = table_inv.getSelectedRow();
+        TableModel mode = table_inv.getModel();
+        String inv_num = mode.getValueAt(i, 1).toString();
+
+        try {
+            HashMap param = new HashMap();
+            param.put("inv_num",inv_num);
+            String rpt = "src/report/report_invoice.jrxml";
+            JasperReport jr = JasperCompileManager.compileReport(rpt);
+            JasperPrint jpp = JasperFillManager.fillReport(jr, param,c);
+            JasperViewer.viewReport(jpp,false);
+
+        } catch(Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +277,7 @@ public static void AddRowToJTable(Object[] dataRow)
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,7 @@ Connection c = getConnection();
     /**
      * Creates new form TransaksiPenjualan
      */
+SimpleDateFormat date = new SimpleDateFormat("dd-MMM-yyyy");
     public TransaksiPenjualan() {
         
         initComponents();
@@ -94,6 +96,11 @@ Connection c = getConnection();
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\ubah.png")); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\img_ind\\tambah.png")); // NOI18N
@@ -228,6 +235,28 @@ public Connection getConnection(){
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+      try{ 
+            int i = tabelTrPenjualan.getSelectedRow();
+            TableModel mode = tabelTrPenjualan.getModel();
+
+            editTransaksiPenjualan edit = new editTransaksiPenjualan();
+            edit.setVisible(true);
+           
+            java.util.Date dt = date.parse((String)mode.getValueAt(i, 0));
+            edit.jDateChooser1.setDate(dt);
+            edit.jTextField3.setText(mode.getValueAt(i, 1).toString());
+            edit.jTextField2.setText(mode.getValueAt(i, 2).toString());
+            
+          
+          
+         
+           
+        } catch(Exception e){
+
+        }    
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
