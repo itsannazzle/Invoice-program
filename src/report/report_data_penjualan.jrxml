@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="411d2344-8cbc-42f1-8f2a-1ca9413ee188">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `trpenjualan` ORDER BY jual_tgl ASC]]>
+	</queryString>
+	<field name="jual_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_tgl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_cus_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_total_item" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_subtot" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_disc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jual_total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="222" y="20" width="123" height="20" uuid="f5d4c0d7-c9a2-4f2b-9a61-c88a408805be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Penjualan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="451" y="0" width="104" height="20" backcolor="#CCCCFF" uuid="9067aaba-aaf0-447a-b482-2ee9a3ce49da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="68" height="20" backcolor="#CCCCFF" uuid="758e58b2-c66b-4ed5-95f4-0da192d330a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="368" y="0" width="83" height="20" backcolor="#CCCCFF" uuid="de43092e-6c8b-48ab-a605-b52dde45484e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="68" y="0" width="91" height="20" backcolor="#CCCCFF" uuid="50a26518-6a04-43e0-8b27-14f28cf737e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="58" height="35" backcolor="#CCCCFF" uuid="ab5e2f7e-9aaa-45ad-ba74-897a865b502c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="0" width="88" height="20" backcolor="#CCCCFF" uuid="3b16f4f0-c94d-4b0e-840d-3e1c7130e7ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Sub total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="159" y="0" width="63" height="35" backcolor="#CCCCFF" uuid="1464f54d-3151-4457-9252-cb429526e88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Id Customer]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="15" width="68" height="20" uuid="bdd76e74-c697-43fd-adec-a3429a2176b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="15" width="91" height="20" uuid="0768a4a6-2575-4573-ab23-f68aba875397"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="15" width="63" height="20" uuid="96f5a59e-b14b-427f-bcb5-9b4397fb9895"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_cus_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="15" width="58" height="20" uuid="23f5170c-db07-4320-b8bd-9207a4bb406a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_total_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="15" width="88" height="20" uuid="79fc9020-85c1-4544-9499-bb30ea8702f1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_subtot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="15" width="83" height="20" uuid="507e18d3-a0cd-44b3-a0f2-f321f6afaa35"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_disc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="15" width="100" height="20" uuid="ee246e46-01fe-4e5f-95e5-836193f91124"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jual_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

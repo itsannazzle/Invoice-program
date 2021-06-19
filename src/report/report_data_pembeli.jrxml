@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83047c67-4134-4e35-a690-2a6edebf6da4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from datapembeli order BY cus_nam ASC]]>
+	</queryString>
+	<field name="cus_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cus_nam" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cus_email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cus_tel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cus_alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="cus_id_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{cus_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="10" width="123" height="20" uuid="4c6d540b-74a8-4201-bb5f-7f49654e8a1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Customer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="68" height="20" backcolor="#CCCCFF" uuid="9059029e-8e44-4e42-8c7f-8b9fdd8625e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="68" y="0" width="100" height="20" backcolor="#CCCCFF" uuid="1adf5315-eb97-4108-a270-39312a88c047"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="168" y="0" width="100" height="20" backcolor="#CCCCFF" uuid="54aeee16-b6c7-444f-9244-3023a73fe4df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="268" y="0" width="100" height="20" backcolor="#CCCCFF" uuid="8c349441-3cbd-46be-9d35-e382aa13973c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Telpon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="368" y="0" width="187" height="20" backcolor="#CCCCFF" uuid="53a47565-53b3-4933-a811-09d25055d25d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="268" y="0" width="100" height="20" uuid="a684a873-03cd-441e-90d1-d586f158d4ba"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cus_tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="0" width="100" height="20" uuid="09260847-0269-4bac-a990-0978e0059fbd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cus_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="0" width="100" height="20" uuid="03458058-51e8-453d-b834-597f72c45961"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cus_nam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="187" height="20" uuid="2d62f192-2f94-469a-8153-d40066dfa871"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cus_alamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="68" height="20" uuid="c499f207-9c44-4c72-8423-de5ca4848dca"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cus_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
