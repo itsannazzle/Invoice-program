@@ -289,14 +289,14 @@
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="359" y="36" width="99" height="19" uuid="1cf78c59-e21a-4cba-a582-f606ba011a5f"/>
+				<reportElement x="346" y="36" width="99" height="19" uuid="1cf78c59-e21a-4cba-a582-f606ba011a5f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
 				<text><![CDATA[Nomor invoice :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="359" y="63" width="99" height="19" uuid="93ac3d33-9adc-41c1-a22f-ff9a2abe5478"/>
+				<reportElement x="346" y="63" width="99" height="19" uuid="93ac3d33-9adc-41c1-a22f-ff9a2abe5478"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
@@ -317,13 +317,6 @@
 				<textFieldExpression><![CDATA[$F{inv_trnomor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="458" y="89" width="97" height="20" uuid="15a5fcfb-b16c-4fb5-861d-bae1874e837d"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{inv_tanggal}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="79" y="62" width="141" height="20" uuid="6719e40e-c7b8-4be7-a2d9-215c4a4f6b06"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Comic Sans MS" size="11"/>
@@ -338,11 +331,11 @@
 				<textFieldExpression><![CDATA[$F{cus_alamat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="359" y="89" width="99" height="19" uuid="dfd7b602-bc6d-4d19-acd3-11d17635c2a3"/>
+				<reportElement x="346" y="89" width="67" height="19" uuid="dfd7b602-bc6d-4d19-acd3-11d17635c2a3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>
-				<text><![CDATA[Dicetak pada :]]></text>
+				<text><![CDATA[Dicetak di :]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="79" y="36" width="100" height="20" uuid="b33e84ff-8799-4d6d-b2d6-5f356d047750"/>
@@ -528,6 +521,20 @@
 				<reportElement x="359" y="421" width="196" height="122" uuid="01bdefe6-b0b1-4acd-ae9a-ec1d5e6a87b4"/>
 				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 3.png"]]></imageExpression>
 			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="458" y="89" width="100" height="20" uuid="c2a8b479-421c-4b6f-a580-f4594df04900"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="89" width="42" height="20" uuid="47d125f0-84a2-4438-813a-d457eeb0c9d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Comic Sans MS" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 </jasperReport>

@@ -220,19 +220,26 @@
 				<text><![CDATA[Nama customer :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="375" y="0" width="80" height="30" uuid="4e71fe7f-6607-4f0e-8274-f81b6e2d8735"/>
+				<reportElement x="352" y="0" width="61" height="20" uuid="4e71fe7f-6607-4f0e-8274-f81b6e2d8735"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
-				<text><![CDATA[Dicetak pada:]]></text>
+				<text><![CDATA[Dicetak di :]]></text>
 			</staticText>
-			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="455" y="0" width="100" height="30" uuid="67b1e73d-423f-443f-800a-711cc892960f"/>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="e0676d76-ed54-496c-9c54-56739c3588ae"/>
 				<textElement verticalAlignment="Middle">
-					<font size="12"/>
+					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="413" y="0" width="42" height="20" uuid="4315e575-cf80-4ddf-b023-93dfba2f3d8c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
