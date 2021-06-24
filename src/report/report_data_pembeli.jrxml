@@ -36,6 +36,20 @@
 				</textElement>
 				<text><![CDATA[Data Customer]]></text>
 			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="32" width="100" height="20" uuid="9190dc9d-ad40-4a18-b8ed-bb980c38b0d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="413" y="32" width="42" height="20" uuid="3bccd621-8da2-425a-9534-590ec09a9ff0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
