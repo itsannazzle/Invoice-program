@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4554f526-6c85-4001-8854-d9d0d6fd4432">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="107"/>
+	<property name="ireport.y" value="224"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -249,13 +249,27 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
+			<line>
+				<reportElement x="10" y="70" width="555" height="1" uuid="d80ffcb5-74f6-4a3e-87e3-97619b555b96"/>
+			</line>
+			<staticText>
+				<reportElement x="159" y="10" width="264" height="25" uuid="f2bd84ba-8ee1-4ab7-bac9-251af6a0d3b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT.Okwi Nusantara Solusindo]]></text>
+			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="142" height="43" uuid="e4c12312-57ba-40a2-9751-e2b2aa59a49f"/>
+				<reportElement x="20" y="20" width="124" height="39" uuid="1597828e-72e5-4bd4-93b5-f2c225f9a809"/>
 				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 1.png"]]></imageExpression>
 			</image>
-			<line>
-				<reportElement x="0" y="75" width="555" height="1" uuid="108f230a-204a-4f3f-8823-4d1bc2c69d5e"/>
-			</line>
+			<staticText>
+				<reportElement x="159" y="35" width="264" height="14" uuid="d4b0b9e7-e380-4fca-a4ea-3d4ef947174a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl.MH Thamrin No.81 Menteng, Jakarta Pusat 10310]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -263,84 +277,77 @@
 			<staticText>
 				<reportElement x="0" y="36" width="69" height="19" uuid="e7bfb280-3b28-4073-9685-753ec6a15292"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Penerima :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="63" width="69" height="19" uuid="fadf4fc1-f9a0-44a7-8a99-2e879bd889cd"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[E-mail :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="89" width="69" height="19" uuid="786ea8b5-4b66-4fee-a18d-b15afd86d709"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Alamat :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="220" y="0" width="100" height="20" uuid="28bcc5a2-66cb-4203-9bdb-d48562c397da"/>
+				<reportElement x="192" y="0" width="167" height="20" uuid="28bcc5a2-66cb-4203-9bdb-d48562c397da"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="14"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Invoice]]></text>
+				<text><![CDATA[LAPORAN DATA INVOICE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="346" y="36" width="99" height="19" uuid="1cf78c59-e21a-4cba-a582-f606ba011a5f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Nomor invoice :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="346" y="63" width="99" height="19" uuid="93ac3d33-9adc-41c1-a22f-ff9a2abe5478"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Nomor transaksi :]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="458" y="36" width="97" height="20" uuid="e9f39e4e-64a2-42da-926c-32ffd83c09cb"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inv_nomor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="458" y="63" width="97" height="20" uuid="c3291db7-966c-41fd-abfa-4ffbec7c49ee"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inv_trnomor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="79" y="62" width="141" height="20" uuid="6719e40e-c7b8-4be7-a2d9-215c4a4f6b06"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cus_email}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="79" y="89" width="193" height="20" uuid="3b7bf8ff-9352-4488-8a5a-5ba64086291b"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cus_alamat}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="346" y="89" width="67" height="19" uuid="dfd7b602-bc6d-4d19-acd3-11d17635c2a3"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
-				</textElement>
-				<text><![CDATA[Dicetak di :]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="79" y="36" width="100" height="20" uuid="b33e84ff-8799-4d6d-b2d6-5f356d047750"/>
 				<textElement>
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inv_penerima}]]></textFieldExpression>
 			</textField>
@@ -366,6 +373,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="25b90d71-25cb-45f4-9648-44e1db7ba792"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{id_produk}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -383,6 +391,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="754ee44d-a92a-485b-9f28-05a441a58390"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{prod_nama}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -400,6 +409,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="0bfcc0c5-3aa2-42d3-83ee-63f5901400ba"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{prod_colour}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -417,6 +427,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="b2747aab-bc43-4338-a962-ba5bcaf003f9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{prod_satuan}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -434,6 +445,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="f7a210ee-4d9e-4589-be86-7ef31be2cedd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -451,6 +463,7 @@
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="d69f181e-fae9-49d9-b917-b5a77b823c40"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -460,80 +473,94 @@
 			<staticText>
 				<reportElement x="346" y="291" width="112" height="30" uuid="20f3c823-6732-4328-80ef-d8b76eb66640"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Sub total :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="346" y="321" width="112" height="24" uuid="03132348-7053-4d43-8c62-25d785010900"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Discount :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="346" y="345" width="112" height="25" uuid="b569313e-c442-487a-9001-727696518c35"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total pembayaran :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="346" y="266" width="112" height="25" uuid="493d9ca5-ef5d-40ca-870b-d38a368e7ae4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[Jumlah produk :]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="458" y="291" width="84" height="30" uuid="d34de5fa-564c-46db-9420-0af30665d604"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jual_subtot}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="458" y="325" width="84" height="20" uuid="c5c82664-5ede-4ad5-8832-788ae61f1078"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jual_disc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="458" y="350" width="84" height="20" uuid="fcd3d2d8-3517-4476-bfca-c51f9fb04285"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11" isBold="true"/>
+					<font fontName="SansSerif" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jual_total}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="458" y="266" width="84" height="25" uuid="04998fcc-477d-437e-87fc-50dba98e1df7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" size="11"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jual_total_item}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="421" width="146" height="46" uuid="0bbee749-5545-4294-91ef-16f5be030bff"/>
-				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 2.png"]]></imageExpression>
-			</image>
-			<image>
 				<reportElement x="359" y="421" width="196" height="122" uuid="01bdefe6-b0b1-4acd-ae9a-ec1d5e6a87b4"/>
 				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 3.png"]]></imageExpression>
 			</image>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="458" y="89" width="100" height="20" uuid="c2a8b479-421c-4b6f-a580-f4594df04900"/>
+			<staticText>
+				<reportElement x="11" y="451" width="45" height="20" uuid="1e2dd254-53c9-4a66-82b5-571a63f57c96"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Admin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="431" width="45" height="20" uuid="d0ae3fcc-3d6d-4139-b90f-6880ce5d9f70"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="55" y="431" width="104" height="20" uuid="b00fd834-094e-4717-857c-489707ec8d59"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="10" y="477" width="146" height="46" uuid="225c1b10-100e-4371-a688-15efbf21984b"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\Printout_Invoice\\Images\\Image 2.png"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="416" y="89" width="42" height="20" uuid="47d125f0-84a2-4438-813a-d457eeb0c9d8"/>
+				<reportElement x="11" y="523" width="45" height="20" uuid="96598167-145f-4328-a4c2-85b19f21a7b5"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Comic Sans MS" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Jakarta,]]></text>
+				<text><![CDATA[Anna]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
