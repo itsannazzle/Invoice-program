@@ -1,5 +1,5 @@
 # Invoice-program
-Invoice desktop program for Print-Out subsidiary of PT OKWIN Nusantara for my field study a.k.a KKP
+Invoice desktop program for Print-Out subsidiary of PT Okwi Nusantara Solusindo
 <img width="2962" alt="INSTAGRAM POST" src="https://user-images.githubusercontent.com/50267658/122636625-6e005a00-d114-11eb-8d81-ca85764ad915.png">
 
 
